@@ -11,15 +11,13 @@
       --bg2:#ffe7ef;
       --card:#ffffffcc;
       --text:#1f1f1f;
-      --muted:rgba(31,31,31,.70);
+      --muted:rgba(31,31,31,.72);
       --pink:#ff4d7d;
       --pink2:#ff7aa2;
       --shadow: 0 18px 50px rgba(0,0,0,.12);
       --radius: 22px;
     }
-
     *{box-sizing:border-box}
-
     body{
       margin:0;
       min-height:100vh;
@@ -30,7 +28,7 @@
         radial-gradient(1200px 700px at 20% 20%, var(--bg2), transparent 60%),
         radial-gradient(1000px 700px at 80% 60%, #ffeef3, transparent 55%),
         linear-gradient(180deg, var(--bg1), #fff);
-      font-family: ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      font-family: ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--text);
       padding:22px;
     }
@@ -65,250 +63,14 @@
     }
 
     .sub{
-      margin:0 0 18px;
+      margin:0 0 14px;
       color: var(--muted);
       font-size: 15px;
       line-height:1.45;
     }
 
-    /* Only photo on first page */
+    /* Only image on the first page */
     .heroImg{
       width:100%;
       border-radius: 20px;
-      border: 1px solid rgba(255,77,125,.18);
-      box-shadow: 0 18px 45px rgba(0,0,0,.15);
-      display:block;
-      object-fit: cover;
-      max-height: 440px;
-      margin: 14px 0 18px;
-    }
-
-    .btnRow{
-      position: relative;
-      height: 92px;
-      margin-top: 6px;
-    }
-
-    .btn{
-      border:0;
-      padding: 14px 20px;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 15px;
-      cursor:pointer;
-      box-shadow: 0 12px 24px rgba(0,0,0,.10);
-      user-select:none;
-      letter-spacing:.2px;
-      transition: transform .12s ease, filter .12s ease;
-    }
-
-    .btn:active{ transform: scale(.98); }
-
-    .yes{
-      background: linear-gradient(135deg, var(--pink), var(--pink2));
-      color: #fff;
-      min-width: 150px;
-    }
-    .yes:hover{ filter: brightness(1.03); }
-
-    .no{
-      background: #fff;
-      color:#333;
-      border: 1px solid rgba(0,0,0,.12);
-      min-width: 150px;
-      position:absolute;
-      left: 190px;
-      top: 0;
-    }
-
-    .bottomNote{
-      margin-top: 14px;
-      font-size: 13px;
-      color: rgba(31,31,31,.72);
-    }
-
-    /* YES screen */
-    .yay{
-      display:none;
-      text-align:center;
-      padding: 8px 4px 4px;
-    }
-
-    .yay h2{
-      margin: 0 0 10px;
-      font-size: clamp(30px, 3.6vw, 46px);
-      color: var(--pink);
-      letter-spacing:.4px;
-    }
-
-    .yay p{
-      margin: 0 0 16px;
-      font-size: 16px;
-      color: rgba(31,31,31,.75);
-      font-weight: 700;
-    }
-
-    .mediaBox{
-      margin: 0 auto;
-      width: min(560px, 100%);
-      border-radius: 18px;
-      overflow:hidden;
-      border: 1px solid rgba(255,77,125,.18);
-      box-shadow: 0 18px 45px rgba(0,0,0,.18);
-      background: rgba(255,255,255,.65);
-    }
-
-    .celebrateMedia{
-      width:100%;
-      display:block;
-      background:#000;
-    }
-
-    .fallback{
-      display:none;
-      padding: 14px 12px;
-      font-weight: 800;
-      color: var(--pink);
-      line-height:1.35;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="card" role="main" aria-live="polite">
-    <div class="sparkle"></div>
-
-    <!-- PAGE 1 -->
-    <div id="page1">
-      <h1>Hey Khadeeja will you be my valentines?</h1>
-      <p class="sub">Sorry for the long wait I am not a coder I never claimed to be a coder</p>
-
-      <!-- ONLY PHOTO ON FIRST PAGE -->
-      <!-- Best practice: upload your own image named cats.jpg into the repo -->
-      <img
-        class="heroImg"
-        src="cats.jpg"
-        alt="Two cute cats cuddling"
-        onerror="this.onerror=null; this.src='https://placekitten.com/1200/700';"
-      />
-
-      <div class="btnRow" id="btnRow">
-        <button class="btn yes" id="yesBtn">Yes 💖</button>
-        <button class="btn no" id="noBtn">No 🙃</button>
-      </div>
-
-      <div class="bottomNote">I won’t take no for an answer 😼</div>
-    </div>
-
-    <!-- PAGE 2 -->
-    <div id="page2" class="yay">
-      <h2>YAY</h2>
-      <p>currently dwerking in joy</p>
-
-      <!-- Reliable media: host it in your repo so it NEVER gets blocked -->
-      <div class="mediaBox">
-        <video
-          id="celebrateVideo"
-          class="celebrateMedia"
-          autoplay
-          loop
-          muted
-          playsinline
-          preload="auto"
-        >
-          <source src="celebrate.mp4" type="video/mp4" />
-        </video>
-
-        <img
-          id="celebrateGif"
-          class="celebrateMedia"
-          src="celebrate.gif"
-          alt="Celebration"
-          style="display:none;"
-        />
-
-        <div id="fallback" class="fallback">
-          Your celebration file isn’t uploaded yet.<br/>
-          Upload <b>celebrate.mp4</b> (recommended) or <b>celebrate.gif</b> to the repo (same folder as index.html).
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const page1 = document.getElementById("page1");
-    const page2 = document.getElementById("page2");
-
-    const noBtn = document.getElementById("noBtn");
-    const yesBtn = document.getElementById("yesBtn");
-    const btnRow = document.getElementById("btnRow");
-
-    const celebrateVideo = document.getElementById("celebrateVideo");
-    const celebrateGif = document.getElementById("celebrateGif");
-    const fallback = document.getElementById("fallback");
-
-    let dodges = 0; // never stops
-
-    function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
-
-    function moveNoButton(){
-      const rowRect = btnRow.getBoundingClientRect();
-      const btnRect = noBtn.getBoundingClientRect();
-
-      const padding = 6;
-      const maxX = rowRect.width - btnRect.width - padding;
-      const maxY = rowRect.height - btnRect.height - padding;
-
-      const x = clamp(Math.random() * maxX, 0, maxX);
-      const y = clamp(Math.random() * maxY, 0, maxY);
-
-      noBtn.style.left = `${x}px`;
-      noBtn.style.top = `${y}px`;
-    }
-
-    // Dodge forever on desktop
-    noBtn.addEventListener("mouseenter", () => {
-      dodges++;
-      moveNoButton();
-
-      // harmless chaos escalation
-      const scale = 1 + Math.min(dodges * 0.03, 0.22);
-      yesBtn.style.transform = `scale(${scale})`;
-    });
-
-    // Dodge forever on mobile
-    noBtn.addEventListener("touchstart", (e) => {
-      e.preventDefault();
-      dodges++;
-      moveNoButton();
-    }, { passive: false });
-
-    yesBtn.addEventListener("click", () => {
-      page1.style.display = "none";
-      page2.style.display = "block";
-
-      // If mp4 fails, try gif. If both fail, show fallback.
-      celebrateVideo.onerror = () => {
-        celebrateVideo.style.display = "none";
-        celebrateGif.style.display = "block";
-      };
-
-      celebrateGif.onerror = () => {
-        celebrateGif.style.display = "none";
-        fallback.style.display = "block";
-      };
-
-      setTimeout(() => {
-        const videoOk = celebrateVideo && celebrateVideo.readyState >= 2;
-        if (!videoOk) {
-          celebrateVideo.style.display = "none";
-          celebrateGif.style.display = "block";
-        }
-      }, 1200);
-    });
-
-    // Start with "No" in a random place
-    moveNoButton();
-  </script>
-</body>
-</html>
+      border: 1px solid rgba(255,77,125,
